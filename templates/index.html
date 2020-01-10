@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+<body>
+       <input type="text" id="id" value="1"/>
+       <button id="btn" onclick="btnClick()">点击</button>
+
+       <div>
+       <h1 id="index">编号</h1>
+       <h2 id="title">标题</h2>
+       <h3 id="author">作者</h3>
+       <p id="content">内容</p>
+       </div>
+   <script>
+        function btnClick() {
+            // let id = document.querySelector('#ipt').value;
+            var id = $("#id").val();
+            console.log(id);
+            $.get("/api/index/data",{id:id},function(resp){
+                console.log(resp);
+                $("#index").html(resp.id)
+                $("#title").html(resp.title)
+                $("#author").html(resp.author)
+                $("#content").html(resp.content)
+            },"json");
+       }
+   </script>
+
+</body>
+</html
